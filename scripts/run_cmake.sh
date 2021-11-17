@@ -1,0 +1,1 @@
+cd build && cmake    -DCMAKE_BUILD_TYPE=Release    -DCMAKE_INSTALL_PREFIX=/home/cgusthin/workspace/llvm-project-rocm/build_install     -DLLVM_ENABLE_PROJECTS="clang;lld"    -DLLVM_TARGETS_TO_BUILD="AMDGPU;X86;NVPTX" -DLLVM_ENABLE_ASSERTIONS=On    ../llvm
