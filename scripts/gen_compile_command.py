@@ -107,6 +107,7 @@ def main() :
   parser.add_option("--run-O0-on-device", help="use O0 for device code", dest="run_O0_device", action="store_true", default=False)
   parser.add_option("--passes-before-cfmelder", help="additional options to run before cfmelder if O0 used for device", dest="passes_before_cfmelder", action="store", default="")
   parser.add_option("--passes-after-cfmelder", help="additional options to run after cfmelder if O0 used for device", dest="passes_after_cfmelder", action="store", default="")
+  parser.add_option("--llc-options", help="additional options to llc", dest="llc_options", action="store", default="")
   (options, args) = parser.parse_args()
 
 
@@ -137,10 +138,10 @@ def main() :
       instrumented_commands.append(opt_command)
 
       if options.run_O0_device:
-        llc_command = f"{options.llvm_home}/bin/llc {orig_opt_level} -mtriple {target_triple} -mcpu={target_cpu} -filetype=obj {options.out_loc}/after_pass.ll -o {obj_name}"
+        llc_command = f"{options.llvm_home}/bin/llc {orig_opt_level} -mtriple {target_triple} -mcpu={target_cpu} -filetype=obj {options.llc_options} {options.out_loc}/after_pass.ll -o {obj_name}"
 
       else:
-        llc_command = f"{options.llvm_home}/bin/llc {opt_level} -mtriple {target_triple} -mcpu={target_cpu} -filetype=obj {options.out_loc}/after_pass.ll -o {obj_name}"
+        llc_command = f"{options.llvm_home}/bin/llc {opt_level} -mtriple {target_triple} -mcpu={target_cpu} -filetype=obj {options.llc_options} {options.out_loc}/after_pass.ll -o {obj_name}"
       instrumented_commands.append(llc_command)
 
     elif command.find("-cc1 -triple nvptx64-nvidia-cuda") != -1:
