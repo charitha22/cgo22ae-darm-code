@@ -1,4 +1,4 @@
-Please go [here](https://github.com/charitha22/cgo22ae-darm-benchmarks) for artifcat evaluation instruction for our CGO-2022 paper *DARM: Control-Flow Melding for SIMT Thread Divergence Reduction*.
+Please check out [here](https://github.com/charitha22/cgo22ae-darm-benchmarks) for artifcat evaluation instructions for our CGO-2022 paper *DARM: Control-Flow Melding for SIMT Thread Divergence Reduction*.
 ---
 
 # The LLVM Compiler Infrastructure
